@@ -15,7 +15,7 @@
 
 <input
   class={[
-    "px-2 py-1 rounded-lg bg-graphite-800 text-white placeholder:text-graphite-500 border border-graphite-400 focus:outline-none focus:ring-2 focus:ring-white",
+    "px-2 py-2 bg-graphite-800 text-white placeholder:text-graphite-500 border border-graphite-400 focus:outline-none focus:ring-2 focus:ring-white",
     className,
   ]}
   bind:value

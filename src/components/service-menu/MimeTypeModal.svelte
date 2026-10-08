@@ -104,7 +104,7 @@
 <div class="w-full">
   <button
     type="button"
-    class="flex w-full items-center justify-between rounded-lg border border-graphite-700 bg-graphite-800 px-3 py-1 text-left text-white cursor-pointer"
+    class="flex w-full items-center justify-between border border-graphite-400 bg-graphite-800 px-2 py-2 text-left text-white cursor-pointer"
     onclick={openModal}
   >
     <span class={selectedCount ? "text-white" : "text-graphite-500"}>
@@ -136,7 +136,7 @@
     }}
   >
     <div
-      class="flex max-h-[80vh] w-full max-w-xl flex-col rounded-lg border border-graphite-700 bg-graphite-800"
+      class="flex max-h-[80vh] w-full max-w-xl flex-col border border-graphite-700 bg-graphite-800"
       role="dialog"
       aria-modal="true"
       aria-label={placeholder}
@@ -150,7 +150,7 @@
 
         <button
           type="button"
-          class="flex h-7 w-7 items-center justify-center rounded-lg text-graphite-400 hover:bg-graphite-700 hover:text-white cursor-pointer"
+          class="flex h-7 w-7 items-center justify-center text-graphite-400 hover:bg-graphite-700 hover:text-white cursor-pointer"
           onclick={closeModal}
           aria-label="Close"
         >
@@ -169,7 +169,7 @@
         {#each categories as category}
           <div>
             <div
-              class="flex items-center gap-2 rounded-lg px-2 py-2 hover:bg-graphite-700"
+              class="flex items-center gap-2 px-2 py-2 hover:bg-graphite-700"
             >
               <button
                 type="button"
@@ -214,7 +214,7 @@
               <div class="pb-1">
                 {#each category.types as type}
                   <label
-                    class="flex cursor-pointer items-center gap-2 rounded-lg px-2 py-1.5 pl-8 hover:bg-graphite-700"
+                    class="flex cursor-pointer items-center gap-2 px-2 py-1.5 pl-8 hover:bg-graphite-700"
                   >
                     <input
                       type="checkbox"
@@ -266,7 +266,7 @@
         <div class="flex items-center gap-2">
           <button
             type="button"
-            class="rounded-lg border border-graphite-700 px-4 py-1 text-white cursor-pointer hover:bg-graphite-700"
+            class="border border-graphite-700 px-4 py-1 text-white cursor-pointer hover:bg-graphite-700"
             onclick={closeModal}
           >
             Cancel
@@ -274,7 +274,7 @@
 
           <button
             type="button"
-            class="rounded-lg bg-white px-4 py-1 text-graphite-950 cursor-pointer"
+            class="bg-white px-4 py-1 text-graphite-950 cursor-pointer"
             onclick={apply}
           >
             Apply

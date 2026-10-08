@@ -20,7 +20,7 @@
   <nav
     class="shrink-0 h-20 w-full bg-graphite-900 flex items-center justify-around"
   >
-    <a href="/service-menu" class="flex flex-col items-center gap-1 text-white">
+    <a href="/" class="flex flex-col items-center gap-1 text-white">
       <div class="relative">
         <Dolphin size={44} />
         <Gear size={20} class="absolute bottom-0 right-0 text-white" />
