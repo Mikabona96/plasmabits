@@ -1,7 +1,7 @@
 <script lang="ts">
-  import Dolphin from "#lib/icons/Dolphin.svelte";
-  import Gear from "#lib/icons/Gear.svelte";
   import { page } from "$app/state";
+  import Dolphin from "$lib/shared/icons/Dolphin.svelte";
+  import Gear from "$lib/shared/icons/Gear.svelte";
   import "../style.css";
 
   let { children } = $props();
@@ -9,7 +9,7 @@
 </script>
 
 <div
-  class="flex flex-col h-screen w-full max-w-162.5 bg-graphite-950 overflow-hidden"
+  class="flex flex-col text-white h-screen w-full max-w-162.5 bg-graphite-950 overflow-hidden"
 >
   <main
     class="flex flex-col min-h-0 flex-1 font-WDXLLubrifontJPN-Regular overflow-hidden"
@@ -20,10 +20,10 @@
   <nav
     class="shrink-0 h-20 w-full bg-graphite-900 flex items-center justify-around"
   >
-    <a href="/" class="flex flex-col items-center gap-1 text-white">
+    <a href="/" class="flex flex-col items-center gap-1">
       <div class="relative">
         <Dolphin size={44} />
-        <Gear size={20} class="absolute bottom-0 right-0 text-white" />
+        <Gear size={20} class="absolute bottom-0 right-0" />
       </div>
       <span class="font-WDXLLubrifontJPN-Regular text-sm"> Service Menu </span>
     </a>
