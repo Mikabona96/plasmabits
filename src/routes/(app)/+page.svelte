@@ -1,128 +1,58 @@
-<script lang="ts">
-  import type { HTMLAttributes } from "svelte/elements";
-  import { fly } from "svelte/transition";
-  import MimeTypeModal from "$lib/service-menu/components/MimeTypeModal.svelte";
-  import ResultScreen from "$lib/service-menu/components/ResultScreen.svelte";
-  import { mimeTypeCategories } from "$lib/service-menu/mock/mimeTypeCategories";
-  import type { CreateDesktopActionResult } from "$lib/service-menu/types";
-  import {
-    createOption,
-    selectFile,
-    selectIcon,
-  } from "$lib/service-menu/utils/index.js";
-  import Button from "$lib/shared/components/Button.svelte";
-  import Input from "$lib/shared/components/Input.svelte";
-  import RadioButton from "$lib/shared/components/RadioButton.svelte";
-  import { cn } from "$lib/shared/utils/cn";
-
-  let { class: className }: HTMLAttributes<HTMLDivElement> = $props();
-
-  let newOptionState = $state({
-    type: "Service",
-    mimeType: [] as string[],
-    name: "",
-    icon: "",
-    exec: "",
-  });
-
-  let launchMode = $state<"command" | "file">("file");
-  let responseState = $state<CreateDesktopActionResult | null>(null);
-
-  let showResult = $state(false);
-
-  const resetFields = () => {
-    showResult = false;
-    responseState = null;
-    launchMode = "file";
-    newOptionState = {
-      type: "Service",
-      mimeType: [] as string[],
-      name: "",
-      icon: "",
-      exec: "",
-    };
-  };
+<script>
+  import CreateCustomAction from "$lib/service-menu/components/CreateCustomAction.svelte";
+  import Plus from "$lib/shared/icons/Plus.svelte";
 </script>
 
-<!-- Outer wrapper with relative positioning so screen slides overlay cleanly -->
-<div class="relative w-full overflow-hidden min-h-112.5">
-  {#if showResult && responseState}
-    <!-- Result screen: slides in from the right (+100px) -->
-    <ResultScreen {responseState} {resetFields} />
-  {:else}
-    <!-- Form screen: slides out to the left (-100px) when opening result -->
-    <div
-      in:fly={{ x: -100, duration: 300, delay: 150 }}
-      out:fly={{ x: -100, duration: 200 }}
-      class={cn(
-        "flex flex-col items-center w-full max-w-100 mx-auto gap-2",
-        className,
-      )}
-    >
-      <span class="text-2xl"> [Desktop Action] </span>
-      <Input
-        class="w-full"
-        placeholder="Option Name"
-        bind:value={newOptionState.name}
-      />
+<!-- Created Actions -->
+<!-- <div class="flex w-full mt-5 gap-4">
+  <div
+    class="flex bg-white flex-col p-2.5 border border-silver/95 rounded-xl min-w-60 h-35"
+  >
+    <img src="/vscode.png" width="40px" alt="vscod" />
+    <span class="mt-1 pl-1 text-midnight font-bold">Open in VS Code</span>
+    <span class="pl-1 text-[#1d1d1f]">code %F</span>
+    <span class="pl-1 text-[#86868b]">folders, text</span>
+  </div>
+  <div
+    class="flex bg-white flex-col p-2.5 border border-silver/95 rounded-xl min-w-60 h-35"
+  >
+    <img src="/vscode.png" width="40px" alt="vscod" />
+    <span class="mt-1 pl-1 text-midnight font-bold">Open in VS Code</span>
+    <span class="pl-1 text-[#1d1d1f]">code %F</span>
+    <span class="pl-1 text-[#86868b]">folders, text</span>
+  </div>
+</div> -->
 
-      <div class="flex items-center gap-2 w-full">
-        <Input
-          class="w-full"
-          placeholder="Command"
-          bind:value={newOptionState.exec}
-        />
-        <span> or </span>
+<!-- Add New Item -->
+<!-- <div
+  class="mt-4 w-60 h-48.5 rounded-xl border font-light text-slate border-silver flex flex-col items-center justify-center"
+>
+  <Plus class="mt-4" size={64} />
+  <span>Add New Item</span>
+</div> -->
 
-        <Button onclick={() => selectFile(newOptionState)}>Browse</Button>
-      </div>
+<!-- Divider -->
+<!-- <div class="mt-6 flex h-px w-full bg-silver/60"></div>
 
-      <div class="flex self-start justify-between w-full gap-2 my-2">
-        <RadioButton
-          bind:group={launchMode}
-          name="launchMode"
-          value="file"
-          label="Open selected file or folder"
-        />
-        <RadioButton
-          bind:group={launchMode}
-          name="launchMode"
-          value="command"
-          label="Launch application only"
-        />
-      </div>
+<h3 class="mt-4 text-2xl font-semibold">Manage Submenus</h3>
 
-      <div class="flex items-center gap-2 w-full">
-        <Input
-          class="flex flex-1"
-          placeholder="Icon"
-          bind:value={newOptionState.icon}
-        />
-        <span> or </span>
-        <Button onclick={() => selectIcon(newOptionState)}>Select Icon</Button>
-      </div>
+<div class="flex gap-4 mt-3.5">
+  <div
+    class="flex bg- flex-col p-2.5 border border-silver/95 rounded-xl w-45 h-33"
+  >
+    <img src="/vscode.png" width="40px" alt="vscod" />
+    <span class="mt-0.5 pl-1 text-midnight font-semibold">Code Tools</span>
+    <span class="pl-1 text-[#86868b]">Code</span>
+    <span class="pl-1 -translate-y-1 text-sm text-[#86868b]">items</span>
+  </div>
+  <div
+    class="flex bg- flex-col p-2.5 border border-silver/95 rounded-xl w-45 h-33"
+  >
+    <img src="/vscode.png" width="40px" alt="vscod" />
+    <span class="mt-0.5 pl-1 text-midnight font-semibold">Code Tools</span>
+    <span class="pl-1 text-[#86868b]">Code</span>
+    <span class="pl-1 -translate-y-1 text-sm text-[#86868b]">items</span>
+  </div>
+</div> -->
 
-      <span class="text-2xl mt-6">[Desktop Entry]</span>
-      <Input
-        class="w-full"
-        placeholder="Type"
-        bind:value={newOptionState.type}
-      />
-      <MimeTypeModal
-        categories={mimeTypeCategories}
-        bind:value={newOptionState.mimeType}
-      />
-
-      <button
-        disabled={!newOptionState.name || !newOptionState.exec}
-        class="mt-6 w-full bg-white text-lg disabled:bg-graphite-400 disabled:text-graphite-950 text-graphite-950 px-6 py-2 cursor-pointer transition-all duration-200 hover:enabled:opacity-90 active:enabled:scale-95"
-        onclick={async () => {
-          responseState = await createOption(newOptionState, launchMode);
-          showResult = true;
-        }}
-      >
-        Create Option
-      </button>
-    </div>
-  {/if}
-</div>
+<CreateCustomAction />

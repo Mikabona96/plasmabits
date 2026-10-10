@@ -1,0 +1,3 @@
+/home/mika/Рабочий стол/iconlookup/build/CMakeFiles/iconlookup.dir
+/home/mika/Рабочий стол/iconlookup/build/CMakeFiles/edit_cache.dir
+/home/mika/Рабочий стол/iconlookup/build/CMakeFiles/rebuild_cache.dir

@@ -4,7 +4,7 @@
   interface IProps extends SVGAttributes<SVGSVGElement> {
     size?: number;
   }
-  let { size = 24, ...rest }: IProps = $props();
+  let { size = 20, ...rest }: IProps = $props();
 </script>
 
 <svg

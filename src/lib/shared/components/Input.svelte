@@ -16,7 +16,7 @@
 
 <input
   class={cn(
-    "px-2 py-2 text-white placeholder:text-graphite-500 border-2 border-graphite-700 hover:border-white/70 focus:outline-none focus:ring-2 focus:ring-white transition-colors duration-200",
+    "px-2 py-0.5 text-midnight placeholder:text-midnight rounded-md border bg- border-silver hover:border-blue-500 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors duration-200",
     className,
   )}
   bind:value

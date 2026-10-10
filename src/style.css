@@ -40,9 +40,14 @@ body {
 
 	/*//! NEW COLORS */
 	--color-midnight: #21283a;
+	--color-blue-wash: #5b92c8;
 	--color-steel: #2f4964;
-	--color-ocean: #297ccc;
-	--color-azure: #24a9ec;
+	--color-ocean: #24a9ec;
+	--color-azure: #44bfff;
 	--color-ice: #67ceef;
-	--color-silver: #c5c3c8;
+	--color-shadow-veil: #0000001a;
+	--color-veil: #0000000a;
+	--color-slate: #929397;
+	--color-silver: #c9cdd0;
+	--color-porcelain: #f5f5f7;
 }
