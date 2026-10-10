@@ -7,15 +7,27 @@ body {
 	overflow: hidden;
 }
 
+/* fonts */
 @font-face {
-	font-family: "WDXLLubrifontJPN-Regular";
-	src: url("/fonts/WDXLLubrifontJPN-Regular.ttf") format("truetype");
-	font-weight: 400;
+	font-family: "Inter";
+	src: url("/fonts/Inter/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url("/fonts/Inter/Inter-Italic-VariableFont_opsz,wght.ttf")
+		format("truetype");
+	font-style: italic;
+	font-weight: 100 900;
+	font-display: swap;
 }
 
 @theme {
 	/* fonts */
-	--font-WDXLLubrifontJPN-Regular: "WDXLLubrifontJPN-Regular", sans-serif;
+	--font-Inter: "Inter", sans-serif;
 
 	/* colors dark theme*/
 	--color-graphite-400: #86888a;
@@ -26,12 +38,11 @@ body {
 	--color-graphite-900: #2e343b;
 	--color-graphite-950: #22272c;
 
-	/* colors light theme*/
-	--color-sand-400: #f0f0ed;
-	--color-sand-500: #e6e7e3;
-	--color-sand-600: #d9dad6;
-	--color-sand-700: #c9cbc6;
-	--color-sand-800: #b5b7b2;
-	--color-sand-900: #9fa19c;
-	--color-sand-950: #888b86;
+	/*//! NEW COLORS */
+	--color-midnight: #21283a;
+	--color-steel: #2f4964;
+	--color-ocean: #297ccc;
+	--color-azure: #24a9ec;
+	--color-ice: #67ceef;
+	--color-silver: #c5c3c8;
 }

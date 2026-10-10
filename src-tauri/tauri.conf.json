@@ -13,8 +13,9 @@
     "windows": [
       {
         "title": "plasmabits",
-        "width": 640,
-        "height": 800
+        "width": 840,
+        "height": 620,
+        "transparent": true
       }
     ],
     "security": {
