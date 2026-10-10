@@ -1,7 +1,4 @@
 <script lang="ts">
-  import Button from "$lib/shared/components/Button.svelte";
-  import { cn } from "$lib/shared/utils/cn";
-
   interface MimeType {
     name: string;
     mimeType: string;
@@ -107,7 +104,7 @@
 <div class="w-full">
   <button
     type="button"
-    class="flex w-full items-center justify-between border-2 border-graphite-700 hover:border-white/70 transition-colors duration-200 px-2 py-2 text-left text-graphite-500 hover:text-white cursor-pointer"
+    class="flex w-full items-center justify-between rounded-lg border border-graphite-700 bg-graphite-800 px-3 py-1 text-left text-white cursor-pointer"
     onclick={openModal}
   >
     <span class={selectedCount ? "text-white" : "text-graphite-500"}>
@@ -130,7 +127,7 @@
 
 {#if isOpen}
   <div
-    class="fixed inset-0 z-50 flex items-center justify-center bg-graphite-950 px-4"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4"
     role="presentation"
     onclick={(event) => {
       if (event.target === event.currentTarget) {
@@ -139,13 +136,13 @@
     }}
   >
     <div
-      class="flex max-h-[80vh] w-full max-w-xl flex-col border-2 border-graphite-700"
+      class="flex max-h-[80vh] w-full max-w-xl flex-col rounded-lg border border-graphite-700 bg-graphite-800"
       role="dialog"
       aria-modal="true"
       aria-label={placeholder}
     >
       <div
-        class="flex items-center justify-between border-b-2 border-graphite-700 px-4 py-3"
+        class="flex items-center justify-between border-b border-graphite-700 px-4 py-3"
       >
         <span class="text-lg text-white">
           {placeholder}
@@ -153,7 +150,7 @@
 
         <button
           type="button"
-          class="flex h-7 w-7 transition-all duration-200 items-center justify-center text-graphite-400 hover:bg-graphite-700 hover:text-white cursor-pointer"
+          class="flex h-7 w-7 items-center justify-center rounded-lg text-graphite-400 hover:bg-graphite-700 hover:text-white cursor-pointer"
           onclick={closeModal}
           aria-label="Close"
         >
@@ -172,27 +169,19 @@
         {#each categories as category}
           <div>
             <div
-              class="flex group items-center gap-2 px-2 py-2 hover:bg-graphite-800 transition-colors duration-200"
+              class="flex items-center gap-2 rounded-lg px-2 py-2 hover:bg-graphite-700"
             >
               <button
                 type="button"
-                class={[
-                  "flex h-5 w-5 shrink-0 items-center justify-center border-2 transition-colors duration-200 group-hover:border-white/70 border-graphite-700 cursor-pointer",
-                  isCategorySelected(category) ? "border-white" : "",
-                ]}
+                class="flex h-4 w-4 shrink-0 items-center justify-center rounded border-2 border-graphite-500 cursor-pointer"
                 onclick={() => toggleCategoryTypes(category)}
                 aria-label={`Select ${category.name}`}
               >
-                <span
-                  class={cn(
-                    "h-2.5 w-2.5 transition-transform duration-200 scale-0 bg-graphite-400",
-                    {
-                      "bg-white scale-100": isCategorySelected(category),
-                      "bg-graphite-400 scale-100":
-                        isCategoryPartiallySelected(category),
-                    },
-                  )}
-                ></span>
+                {#if isCategorySelected(category)}
+                  <span class="h-2 w-2 rounded-sm bg-white"></span>
+                {:else if isCategoryPartiallySelected(category)}
+                  <span class="h-2 w-2 rounded-sm bg-graphite-400"></span>
+                {/if}
               </button>
 
               <button
@@ -225,7 +214,7 @@
               <div class="pb-1">
                 {#each category.types as type}
                   <label
-                    class="flex cursor-pointer group items-center gap-2 px-2 py-1.5 pl-8 hover:bg-graphite-800 transition-colors duration-200"
+                    class="flex cursor-pointer items-center gap-2 rounded-lg px-2 py-1.5 pl-8 hover:bg-graphite-700"
                   >
                     <input
                       type="checkbox"
@@ -235,16 +224,23 @@
                     />
 
                     <div
-                      class="flex h-4 w-4 shrink-0 items-center transition-colors duration-200 justify-center border-2 border-graphite-700 group-hover:border-white/70 peer-checked:border-white"
+                      class="flex h-4 w-4 shrink-0 items-center justify-center rounded border-2 border-graphite-500 peer-checked:border-white peer-checked:bg-white"
                     >
-                      <div
-                        class={cn(
-                          "w-2 h-2 bg-white scale-0 transition-transform duration-200",
-                          {
-                            "scale-100": isSelected(type.mimeType),
-                          },
-                        )}
-                      ></div>
+                      {#if isSelected(type.mimeType)}
+                        <svg
+                          class="h-3 w-3 text-graphite-950"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                        >
+                          <path
+                            d="M4 10L8 14L16 6"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      {/if}
                     </div>
 
                     <span class="text-sm text-white">
@@ -259,7 +255,7 @@
       </div>
 
       <div
-        class="flex items-center justify-between border-t-2 border-graphite-700 px-4 py-3"
+        class="flex items-center justify-between border-t border-graphite-700 px-4 py-3"
       >
         <span class="text-sm text-graphite-400">
           {selectedTypes.length}
@@ -268,22 +264,21 @@
         </span>
 
         <div class="flex items-center gap-2">
-          <Button
+          <button
             type="button"
-            variant="outlined"
-            class="px-4 py-1 text-white"
+            class="rounded-lg border border-graphite-700 px-4 py-1 text-white cursor-pointer hover:bg-graphite-700"
             onclick={closeModal}
           >
             Cancel
-          </Button>
+          </button>
 
-          <Button
+          <button
             type="button"
-            class="bg-white px-4 py-1 text-graphite-950 cursor-pointer"
+            class="rounded-lg bg-white px-4 py-1 text-graphite-950 cursor-pointer"
             onclick={apply}
           >
             Apply
-          </Button>
+          </button>
         </div>
       </div>
     </div>
